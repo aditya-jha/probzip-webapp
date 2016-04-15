@@ -21,6 +21,7 @@ def index(request):
                 }
             ]
         },
+        "categories": [1,2,3,4]
     }
 
     return render(request, 'homepage.html', variables)

@@ -21,11 +21,15 @@
         {% include 'partials/sidebar_navigation.html' with data=sidebar_navigation.data %}
     {% endif %}
 
-    
+    {% block content %}{% endblock %}
 
     {% compress js %}
-    <script type="text/javascript" src="{% static 'bower_components/jquery/dist/jquery.js' %}"></script>
-    <script type="text/javascript" src="{% static 'bower_components/bootstrap/dist/js/bootstrap.js' %}"></script>
+    <script type="text/javascript" src="{% static 'bower_components/jquery/dist/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'bower_components/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'bower_components/doT/doT.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'bower_components/t3js/dist/t3.min.js' %}"></script>
     {% endcompress %}
+
+    {% block javascript %}{% endblock %}
 </body>
 </html>

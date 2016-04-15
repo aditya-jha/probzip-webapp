@@ -1,1 +1,33 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="homepage_content">
+        {% include "partials/homepage_main_carousel.html" with elementID="homepageMainCarousel" %}
+
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="text-center"><u>SHOP BY CATEGORY</u></h2>
+            </div>
+        </div>
+        <div class="row">
+            {% for c in categories %}
+            <a href="#" class="category-box">
+                <div class="col-md-6 col-xs-12">
+                    <div class="col-xs-12">
+                        <img src="{% static 'img/kurti.png' %}" />
+                    </div>
+                    <div class="col-xs-12">
+                        <p class="text-center">
+                            Kurti
+                        </p>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
