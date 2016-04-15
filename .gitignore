@@ -5,6 +5,10 @@
 db.sqlite3
 **/static-only/
 **/static-only
+**/bower_components/
+**/bower_components
+static/static/bower_components
+static/static/bower_components/
 
 # Created by https://www.gitignore.io/api/django,vim,sublimetext,intellij,windows,linux,osx,visualstudio,pycharm
 

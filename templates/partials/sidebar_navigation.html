@@ -1,0 +1,13 @@
+<div class="sidebar-navigation">
+    <div class="container-fluid">
+        <h3 class="text-center">Categories</h3>
+        <hr />
+        <ul>
+            {% for d in data %}
+            <li>
+                {{ d.displayName }}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

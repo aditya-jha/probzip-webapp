@@ -1,9 +1,31 @@
+{% load staticfiles %}
+{% load compress %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Homepage</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ page_title }}</title>
+
+    {% compress css %}
+    <link href="{% static 'bower_components/bootstrap/dist/css/bootstrap.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+    {% endcompress %}
 </head>
 <body>
-  This is the body
+
+    {% include 'partials/header.html' %}
+
+    {% if sidebar_navigation.display %}
+        {% include 'partials/sidebar_navigation.html' with data=sidebar_navigation.data %}
+    {% endif %}
+
+    
+
+    {% compress js %}
+    <script type="text/javascript" src="{% static 'bower_components/jquery/dist/jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'bower_components/bootstrap/dist/js/bootstrap.js' %}"></script>
+    {% endcompress %}
 </body>
 </html>

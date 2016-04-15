@@ -40,7 +40,7 @@ INSTALLED_APPS = [
 ]
 
 INSTALLED_APPS += [
-    'pipeline'
+    'compressor'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -136,15 +136,20 @@ MEDIA_URL = '/media/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static", "static-only")
 
-## pipeline settings
-STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
-
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'pipeline.finders.PipelineFinder',
+    'compressor.finders.CompressorFinder',
 )
 
-PIPELINE = {
-    'PIPELINE_ENABLED': True
-}
+if not DEBUG:
+
+    COMPRESS_ENABLED = True
+    COMPRESS_OFFLINE = True
+    COMPRESS_OUTPUT_DIR = 'build'
+    COMPRESS_CSS_FILTERS = ['compressor.filters.css_default.CssAbsoluteFilter',  'compressor.filters.cssmin.CSSMinFilter']
+
+    COMPRESS_OFFLINE_CONTEXT = {
+        'STATIC_ROOT': STATIC_ROOT,
+        'STATIC_URL': STATIC_URL
+    }
