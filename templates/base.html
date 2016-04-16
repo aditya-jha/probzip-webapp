@@ -16,9 +16,11 @@
 <body>
 
     {% include 'partials/header.html' %}
-
+    
     {% if sidebar_navigation.display %}
-        {% include 'partials/sidebar_navigation.html' with data=sidebar_navigation.data %}
+        <div class="sidebar-navigation">
+            {% include 'partials/sidebar_navigation.html' with data=sidebar_navigation.data %}
+        </div>
     {% endif %}
 
     {% block content %}{% endblock %}

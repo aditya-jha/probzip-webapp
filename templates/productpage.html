@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="homepage_content">
+        <div class="col-md-4 col-xs-12">
+            {% include "partials/productpage_carousel.html" %}
+        </div>
+        <div class="col-md-8 col-xs-12">
+            {% include "partials/productpage_productinfo.html" %}
+        </div>
+    </div>
+</div>
+{% endblock %}
