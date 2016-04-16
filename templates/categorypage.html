@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="homepage_content">
+        <div class="col-xs-12">
+            <h2>
+                Name goes here
+            </h2>
+            <hr />
+        </div>
+        <div class="col-sm-6 col-xs-12">
+            {% include "partials/product_card.html" with product="p" %}
+        </div>
+        <div class="col-sm-6 col-xs-12">
+            {% include "partials/product_card.html" with product="p" %}
+        </div>
+    </div>
+</div>
+{% endblock %}

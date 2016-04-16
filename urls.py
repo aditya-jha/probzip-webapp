@@ -17,10 +17,12 @@ from django.conf.urls import url
 from django.conf.urls.static import static
 from django.conf import settings
 
-from urlHandlers import homepage
+from urlHandlers import homepage, categorypage, productpage
 
 urlpatterns = [
     url(r'^$', homepage.index),
+    url(r'^([^/]+)$', categorypage.index),
+    url(r'^([^/]+)/([^/]+)$', productpage.index),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
