@@ -1,11 +1,14 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
-from scripts import utils
+from scripts import utils, services
+from django.http import Http404
 
 
 def index(request):
-
-    data = utils.getAllCategoriesData()
+    try:
+        data = services.getAllCategoriesData()
+    except Exception as e:
+        raise Http404()
 
     variables = {
         "page_title": "homepage",

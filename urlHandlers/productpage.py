@@ -1,15 +1,15 @@
 from django.http import Http404
 from django.shortcuts import render
 
-from scripts import utils
+from scripts import utils, services
 
 
 def index(request, category_slug, product_slug):
 
     try:
         productID = utils.getIDFromSlug(product_slug)
-        data = utils.getAllCategoriesData()
-        product_data = utils.getProductData(str(productID))
+        data = services.getAllCategoriesData()
+        product_data = services.getProductData(str(productID))
     except Exception as e:
         raise Http404()
 
