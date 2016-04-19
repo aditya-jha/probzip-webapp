@@ -4,35 +4,28 @@ from django.http import Http404
 
 from scripts import utils
 
-def index(request, slug):
+def index(request, category_slug):
 
     try:
-        categoryID = utils.getIDFromSlug(slug)
+        categoryID = utils.getIDFromSlug(category_slug)
+        data = utils.getAllCategoriesData()
+        products_data = utils.getCategoryProductsData(str(categoryID))
     except Exception as e:
         raise Http404()
 
     ## request detials from api
 
+
+
+
     variables = {
         "page_title": "categories",
         "sidebar_navigation": {
             "display": True,
-            "data": [
-                {
-                    "displayName": "Kurti",
-                    "url": "kurti"
-                },
-                {
-                    "displayName": "Kurti",
-                    "url": "kurti"
-                },
-                {
-                    "displayName": "Kurti",
-                    "url": "kurti"
-                }
-            ]
+            "data": data
         },
-        "categories": [1,2,3,4]
+        "categories": [1,2,3,4],
+        "products_data":products_data
     }
-    
+
     return render(request, 'categorypage.html', variables)

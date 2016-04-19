@@ -1,14 +1,14 @@
 <ul>
     <li>
-        <h2>Product Name</h2>
+        <h2>{{product_data.name}}</h2>
     </li>
     <li>
-        Unit Price: Rs. 1500/piece <span class="strike-through-class">Rs. 2000 / piece</span> (upto 20% discount)
+        Unit Price: Rs. {{product_data.discounted_price_per_unit}}/piece <span class="strike-through-class">Rs. {{product_data.price_per_unit}} / piece</span> (upto {{product_data.max_discount}}% discount)
     </li>
     <li>
-        Sold by: XYZ Seller
+        Sold by: {{product_data.seller_name}}
     </li>
     <li>
-        Lot Size: 10 units
+        Lot Size: {{product_data.lot_size}} units
     </li>
 </ul>
