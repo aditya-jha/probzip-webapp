@@ -6,21 +6,23 @@
     <div class="col-xs-6">
         <ul>
             <li>
-                <strong>Product Name</strong>
+              <a href="{{p.url}}">
+                <strong>{{p.name}}</strong>
+              </a>
             </li>
             <hr />
             <li>
-                20% discount
+                {{p.max_discount}}% discount
             </li>
             <hr />
             <li>
-                <span>Rs. 2000 / piece</span>
+                <span>Rs. {{p.price_per_unit}} / piece</span>
                 <br />
-                Rs. 1500 / piece
+                Rs. {{p.discounted_price_per_unit}} / piece
             </li>
             <hr />
             <li>
-                Lot Size: 10 units
+                Lot Size: {{p.lot_size}} units
             </li>
         </ul>
     </div>

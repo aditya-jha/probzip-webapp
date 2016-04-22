@@ -1,4 +1,9 @@
 
+
 def getIDFromSlug(slug):
-    slug = slug.split('-')
-    return int(slug[len(slug)-1])
+	try:
+		slug = slug.split('-')
+		arr = int(slug[len(slug)-1])
+	except Exception as e:
+		raise Http404()
+	return arr

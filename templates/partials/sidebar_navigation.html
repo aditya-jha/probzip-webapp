@@ -5,8 +5,10 @@
         <ul>
             {% for d in data %}
             <li>
-                {{ d.displayName }}
-            </li>
+            <a href="{{d.url}}">
+                {{ d.display_name }}
+            </a>
+          </li>
             {% endfor %}
         </ul>
     </div>

@@ -21,8 +21,8 @@ from urlHandlers import homepage, categorypage, productpage
 
 urlpatterns = [
     url(r'^$', homepage.index),
-    url(r'^([^/]+)$', categorypage.index),
-    url(r'^([^/]+)/([^/]+)$', productpage.index),
+    url(r'^(?P<category_slug>[^/]+)$', categorypage.index),
+    url(r'^(?P<category_slug>[^/]+)/(?P<product_slug>[^/]+)$', productpage.index),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
