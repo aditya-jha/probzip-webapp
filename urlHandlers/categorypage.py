@@ -1,18 +1,14 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-from django.http import Http404
+from django.http import HttpResponse, Http404
 
 from scripts import utils
-from services import categoryservice
+from services import categoryService
 
 def index(request, category_slug):
 
     categoryID = utils.getIDFromSlug(category_slug)
-    data = categoryservice.getAllCategoriesData()
-    products_data = categoryservice.getCategoryProductsData(str(categoryID))
-
-    ## request detials from api
-
+    data = categoryService.getAllCategoriesData()
+    products_data = categoryService.getCategoryProductsData(str(categoryID))
 
     variables = {
         "page_title": "categories",

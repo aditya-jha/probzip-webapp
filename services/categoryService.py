@@ -1,16 +1,14 @@
-import requests
-import json
 from django.http import Http404
+
+from scripts import apiUrlMapper
+
+import requests, json
 from decimal import Decimal
-from scripts import apiurlmapper
 
 def getAllCategoriesData():
 
-    categoryString = apiurlmapper.mapper["category_page_url"]
-
-    categoryURL = apiurlmapper.mapper["base_url"] + categoryString
-
-    requestResponse = requests.get(categoryURL)
+    categoryAPIURL = apiUrlMapper.generateUrl('category')
+    requestResponse = requests.get(categoryAPIURL)
 
     if requestResponse.status_code == requests.codes.ok:
         try:
@@ -18,7 +16,6 @@ def getAllCategoriesData():
             if jsonText["statusCode"] != "2XX":
                 raise Http404()
             categories = jsonText["body"]["categories"]
-
         except Exception as e:
             raise Http404()
     else:
@@ -26,27 +23,21 @@ def getAllCategoriesData():
 
     return categories
 
-def getCategoryProductsData(category_slug):
+def getCategoryProductsData(categoryID):
 
-    categoryString = apiurlmapper.mapper["category_page_url"]
-
-    categoryQueryParameter = apiurlmapper.mapper["category_query_string"]
-
-    categoryURL = apiurlmapper.mapper["base_url"] + categoryString + categoryQueryParameter + category_slug
-
-    requestResponse = requests.get(categoryURL)
+    params =  {
+        "categoryID": categoryID
+    }
+    categoryAPIURL = apiUrlMapper.generateUrl('category', params)
+    requestResponse = requests.get(categoryAPIURL)
 
     if requestResponse.status_code == requests.codes.ok:
         try:
             jsonText = json.loads(requestResponse.text)
             print jsonText
-
             if jsonText["statusCode"] != "2XX":
                 raise Http404()
-
-
             products = jsonText["body"]["products"]
-
         except Exception as e:
             raise Http404()
     else:

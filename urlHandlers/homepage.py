@@ -1,14 +1,14 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
-from scripts import utils, services
-from django.http import Http404
-from services import categoryservice
+from django.http import HttpResponseRedirect,Http404
+
+from scripts import utils
+from services import categoryService
 
 
 def index(request):
+    ## fetch relevant data from API
+    data = categoryService.getAllCategoriesData()
 
-    data = categoryservice.getAllCategoriesData()
- 
     variables = {
         "page_title": "homepage",
         "sidebar_navigation": {
